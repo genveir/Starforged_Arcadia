@@ -10,16 +10,16 @@ Procedures for rolling up sectors, planets, settlements and people. They draw on
 
 **Roll only what play needs.** Each procedure is split into layers. Roll a layer when the character learns that much, not before. A planet the crew only sees from long range never gets its atmosphere rolled.
 
-**Human or alien.** Outside human space, settlement, character and faction results are read as alien or mixed (see `House Rules.md` and `neighbouring-peoples.md`). The name tables are human; alien names come from the people's own setting document.
+**Human or alien.** Outside human space, settlement, character and faction results are read as alien or mixed (see `House Rules.md` and `neighbouring-races.md`). The name tables are human; alien names come from the race's document in `Arcadia.Races`.
 
-**Pauses.** Anything a procedure produces that falls on the worldbuilding pause list in `How To Run.md` is a draft until the player confirms it. That is always true of a new people, a sector's holder, and a person rolled at the full tier. Use placeholders until then.
+**Pauses.** Anything a procedure produces that falls on the worldbuilding pause list in `How To Run.md` is a draft until the player confirms it. That is always true of a new race, a sector's holder, and a person rolled at the full tier. Use placeholders until then.
 
 ## Regions
 
-A sector's region says how firmly its local people hold it. It is not a distance from human space.
+A sector's region says how firmly the local races hold it. It is not a distance from human space.
 
 - **Core.** Someone's heartland. Dense settlement, traffic, patrols and defences. Rich and dangerous to raid.
-- **Frontier.** Borderland. Held loosely, or contested between peoples. Settlements are fewer and more exposed.
+- **Frontier.** Borderland. Held loosely, or contested between races. Settlements are fewer and more exposed.
 - **Periphery.** Wild space. Nobody truly holds it. Few people, old ruins, and whatever lives out there.
 
 Tables that vary by region have the region in their filename: `Space/Sighting_Core.md`, `Settlements/Population_Frontier.md`, `Planets.Ice/Settlements_Periphery.md`, and so on.
@@ -30,11 +30,11 @@ Tables that vary by region have the region in their filename: `Space/Sighting_Co
 
 1. **Region.** Usually this is already known: the company chose where to go. Otherwise decide it, or roll d100: 01–30 Core, 31–70 Frontier, 71–00 Periphery.
 2. **Holder.** Who holds the sector.
-   - Core: one people.
-   - Frontier: d100. 01–50 held loosely by one people; 51–00 contested between two.
-   - Periphery: d100. 01–70 nobody; 71–00 claimed by a people who do not enforce it.
+   - Core: one race.
+   - Frontier: d100. 01–50 held loosely by one race; 51–00 contested between two.
+   - Periphery: d100. 01–70 nobody; 71–00 claimed by a race that does not enforce it.
 
-   For each people involved, if any are already known, Ask the Oracle whether it is one of them (Likely if they border this sector, 50/50 otherwise). A new people is a pause.
+   For each race involved, if any are already known, Ask the Oracle whether it is one of them (Likely if they border this sector, 50/50 otherwise). A new race is a pause.
 3. **Chart name.** The human name on the expedition charts: `Space/Sector_Name_Prefix.md` plus `Space/Sector_Name_Suffix.md`. The locals' name for it comes when the holder is worked out.
 4. **Where the carrier waits.** Pick a holding position in deep space, out of the way of the holder's traffic: empty space, a nebula, a debris field, the shadow of a dead star. Roll `Space/Stellar_Object.md` if the system's star matters.
 5. **Charted locations.** What the charts, long-range surveys or local intelligence show. Core 4, Frontier 3, Periphery 2. For each, roll `Space/Sighting_<Region>.md` and follow its references:
@@ -94,7 +94,7 @@ More locations emerge in play, from the same Sighting table, as the crews range 
 
 7. **Trouble.** `Settlements/Trouble.md`, when the crew learns what is wrong there.
 
-**Name.** From the people who live there. Until they are worked out, a placeholder from the chart: *the orbital at Ashen Abyss 3*.
+**Name.** From the race that lives there, or a name the crew gives it if they do not know the race's language. Until then, a placeholder from the chart: *the orbital at Ashen Abyss 3*.
 
 **Record.** As a section of its planet's or sector's document until it is developed in play, then its own document in `Arcadia.Places`.
 
@@ -106,7 +106,7 @@ More locations emerge in play, from the same Sighting table, as the crews range 
 
 1. **First look.** `Characters/First_Look.md`, once or twice.
 2. **Disposition.** `Characters/Disposition.md`. See the note below for aliens meeting humans.
-3. **Name.** If they need one: for humans, `Characters/Name_Given_Name.md` and `Characters/Name_Family_Name.md`, or `Characters/Name_Callsign.md` for a spacer; for aliens, from their people's naming note, or a descriptive placeholder until there is one.
+3. **Name.** If they need one: for humans, `Characters/Name_Given_Name.md` and `Characters/Name_Family_Name.md`, or `Characters/Name_Callsign.md` for a spacer; for aliens, from their race's document in `Arcadia.Races`, or a descriptive placeholder until there is a naming note.
 
 **Full tier**, for anyone named, given a role or likely to recur. This is a pause: the results are a draft until confirmed.
 
