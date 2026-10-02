@@ -26,6 +26,8 @@ A task does not need every box filled to be finished. Fewer filled boxes means a
 
 If all drawn boxes fill and the task is still not done, either draw new boxes and keep going, or treat it as one stage of a larger job: Reap the Benefits and Make a Task for the next stage.
 
+**No pressure.** A task should never be played for drama. Don't introduce stakes or twists for tension. If a task is canceled, that's unfortunate, but no one will hold it against the character.
+
 ---
 
 ## MAKE A TASK
