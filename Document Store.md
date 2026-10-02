@@ -2,23 +2,23 @@
 
 Campaign material lives in two places. Project files (this document, the rules documents, house rules) are read-only and stable. Everything that changes during play lives in the document store, reached through the localMCP tools.
 
-Categories are dotted paths. `StarforgedCozy` is the parent category and holds these leaf categories:
+Categories are dotted paths. `Arcadia` is the parent category and holds these leaf categories:
 
-- **StarforgedCozy.State.** `game-state.md`, `player-character.md` and `ship.md`.
-- **StarforgedCozy.Vows.** One document per open vow: its terms and its story. Written when a vow is sworn, when its story moves on, and archived when it is fulfilled or forsaken.
-- **StarforgedCozy.Tasks.** One document per open task: its terms and its story. Written when a task is made, when its story moves on, and archived when it is finished or cancelled.
-- **StarforgedCozy.People.** One document per NPC worth a record, connection or not, plus `unnamed-people.md` and a document for each group, such as a crew or a household.
-- **StarforgedCozy.Places.** One document per location established in play: a station, a settlement, a planet, a derelict. A place's parts (decks, districts, rooms) are `##` sections of its document. Each summary says where the place is as well as what it is, so the index reads as a map.
-- **StarforgedCozy.Setting.** The truths of the setting, factions, institutions, technology and anything else about how the setting works, one document per topic.
-- **StarforgedCozy.Oracles.** The Starforged oracle tables, one document per table, plus any the player has added. Not indexed, and split across 25 leaves; see Oracles below.
-- **StarforgedCozy.Sessions.** Narrative session summaries, one document per session, numbered `session_001.md`, `session_002.md`, and so on.
-- **StarforgedCozy.SessionNotes.** Rulings and anything else worth noting that is not part of the session's story, one document per session, numbered to match its summary: `notes_001.md` goes with `session_001.md`. Not indexed.
+- **Arcadia.State.** `game-state.md`, `player-character.md` and `ship.md`.
+- **Arcadia.Vows.** One document per open vow: its terms and its story. Written when a vow is sworn, when its story moves on, and archived when it is fulfilled or forsaken.
+- **Arcadia.Tasks.** One document per open task: its terms and its story. Written when a task is made, when its story moves on, and archived when it is finished or cancelled.
+- **Arcadia.People.** One document per NPC worth a record, connection or not, plus `unnamed-people.md` and a document for each group, such as a crew or a household.
+- **Arcadia.Places.** One document per location established in play: a station, a settlement, a planet, a derelict. A place's parts (decks, districts, rooms) are `##` sections of its document. Each summary says where the place is as well as what it is, so the index reads as a map.
+- **Arcadia.Setting.** The truths of the setting, factions, institutions, technology and anything else about how the setting works, one document per topic.
+- **Arcadia.Oracles.** The Starforged oracle tables, one document per table, plus any the player has added. Not indexed, and split across 25 leaves; see Oracles below.
+- **Arcadia.Sessions.** Narrative session summaries, one document per session, numbered `session_001.md`, `session_002.md`, and so on.
+- **Arcadia.SessionNotes.** Rulings and anything else worth noting that is not part of the session's story, one document per session, numbered to match its summary: `notes_001.md` goes with `session_001.md`. Not indexed.
 
-Documents live only in leaves. Every tool that reads, lists or writes a specific document needs the full leaf path, for example `category: "StarforgedCozy.People"`, `filename: "dockmaster-oyelaran.md"`. The two search tools are the exception: they take a category at any level, and a parent covers everything under it. Search `StarforgedCozy` when you do not know where something lives, and a leaf when you do. Filenames include the `.md` extension and are only unique within their leaf.
+Documents live only in leaves. Every tool that reads, lists or writes a specific document needs the full leaf path, for example `category: "Arcadia.People"`, `filename: "dockmaster-oyelaran.md"`. The two search tools are the exception: they take a category at any level, and a parent covers everything under it. Search `Arcadia` when you do not know where something lives, and a leaf when you do. Filenames include the `.md` extension and are only unique within their leaf.
 
 ## Reading
 
-`list_documents` lists a leaf's documents with their summaries. Given `StarforgedCozy` it is refused with the list of leaves, which is a quick way to see them. `get_document` reads one document in full. `get_document_summary` reads only a document's summary, which is useful after a search returns several chunks from one file.
+`list_documents` lists a leaf's documents with their summaries. Given `Arcadia` it is refused with the list of leaves, which is a quick way to see them. `get_document` reads one document in full. `get_document_summary` reads only a document's summary, which is useful after a search returns several chunks from one file.
 
 ## Searching
 
@@ -32,7 +32,7 @@ Semantic search is poor at rare proper nouns, and science fiction is full of the
 
 ## Oracles
 
-`StarforgedCozy.Oracles` is a parent of 25 leaf categories holding the Starforged oracle tables, one document per table, plus any the player has added. None are indexed, so `search_index` will not find them. All roll ranges are fully written out at width 2, e.g. "| 01, 02, 03 |", not "|1-3|", and "00" not "100". Use `find_text` with the leaf, the oracle filename and your roll (`11`, not `|11|`) to get just the row you need. To find a table, use `list_documents` on a leaf, or `find_text` on `StarforgedCozy.Oracles`. The leaves are:
+`Arcadia.Oracles` is a parent of 25 leaf categories holding the Starforged oracle tables, one document per table, plus any the player has added. None are indexed, so `search_index` will not find them. All roll ranges are fully written out at width 2, e.g. "|01,02,03 |", not "|1-3|", and "00" not "100". Use `find_text` with the leaf, the oracle filename and your roll (`11`, not `|11|`) to get just the row you need. To find a table, use `list_documents` on a leaf, or `find_text` on `Arcadia.Oracles`. The leaves are:
 
 - **Core.** Action, Theme, Descriptor and Focus.
 - **Characters**, **Creatures**, **Factions**, **Settlements**, **Starships**, **Space**, **Derelicts**, **Vaults** and **LocationThemes.** The tables for each kind of subject.
@@ -41,7 +41,7 @@ Semantic search is poor at rare proper nouns, and science fiction is full of the
 - **Planets.General.** Planet class, peril and opportunity.
 - **Planets.Desert**, **Planets.Furnace**, **Planets.Grave**, **Planets.Ice**, **Planets.Jovian**, **Planets.Jungle**, **Planets.Ocean**, **Planets.Rocky**, **Planets.Shattered**, **Planets.Tainted** and **Planets.Vital.** One leaf per planet class: atmosphere, settlements, observed from space, features and life.
 
-A filename is the table's path within its leaf, joined with underscores: `Core/Action.md`, `Derelicts/Access_Feature.md`, `Planets.Desert/Settlements_Terminus.md`. Where a result points to another table it says so, as in "(see Factions/Legacy.md)". A line under a table headed "cannot be rolled on this table (choose only)" lists results that can be picked but not rolled. Tables the player adds go in their own leaf under `StarforgedCozy.Oracles`, in the same format, not into the Starforged leaves.
+A filename is the table's path within its leaf, joined with underscores: `Core/Action.md`, `Derelicts/Access_Feature.md`, `Planets.Desert/Settlements_Terminus.md`. Where a result points to another table it says so, as in "(see Factions/Legacy.md)". A line under a table headed "cannot be rolled on this table (choose only)" lists results that can be picked but not rolled. Tables the player adds go in their own leaf under `Arcadia.Oracles`, in the same format, not into the Starforged leaves.
 
 ## Writing
 
@@ -62,7 +62,7 @@ Session summaries are written to be searched. The `#` title is the session numbe
 
 Note the moves and their outcomes briefly in the scene where they happened, in italics at the end of the paragraph: *(Face Danger +edge: weak hit, health 5 → 4.)*
 
-Keep the summary to the story of the session. Rulings and anything else worth noting go in the session's notes document in `StarforgedCozy.SessionNotes`, created with `add_document`, not indexed, with the same number and the same `#` title as the summary.
+Keep the summary to the story of the session. Rulings and anything else worth noting go in the session's notes document in `Arcadia.SessionNotes`, created with `add_document`, not indexed, with the same number and the same `#` title as the summary.
 
 ## Every fact has exactly one home
 
@@ -74,7 +74,7 @@ Do not copy a value into a second document.
 - **Vow documents**: rank, the vow as sworn, who it was sworn to, and the story so far. No progress. The summary says what the vow is and where it stands in one line.
 - **Task documents**: urgency, complexity, boxes, carryover, any standing rulings, and the story so far. No ticks. The summary says what the task is and where it stands in one line.
 - **People documents**: static facts only. Identity, role, where they are usually found, appearance and manner, and what has been established about them in play. No connection rank or progress. A person met but not yet worth a document has an entry in `unnamed-people.md`; when they earn one, give them their own and remove their entry with `delete_document_section`.
-- **Group documents**: people who arrive and leave together, such as a crew, a household or a cell, share one document in `StarforgedCozy.People`, named for the group, with one `##` section per named member and one for the group as a whole. A member who earns their own document gets one that points to the group document, and their section is removed from it. The group document is kept after the group leaves.
+- **Group documents**: people who arrive and leave together, such as a crew, a household or a cell, share one document in `Arcadia.People`, named for the group, with one `##` section per named member and one for the group as a whole. A member who earns their own document gets one that points to the group document, and their section is removed from it. The group document is kept after the group leaves.
 - **Place documents**: locations established at the table. Each place lives in one document only; another place's document may name it and point to it, but does not repeat its description. The ship is not a place document; it lives in `ship.md`.
 - **Setting documents**: how the setting works, as established at the table. A faction document describes the faction, not the times the character dealt with it.
 - **Session summaries**: narrative only. What happened, not where things stand.

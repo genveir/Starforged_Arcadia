@@ -1,4 +1,4 @@
-# How To Run Starforged Cozy
+# How To Run Arcadia
 
 Read this first. It governs everything else.
 
@@ -101,9 +101,9 @@ Campaign material lives in two places. Project files (this document, the rules d
 ## Before a session
 
 1. Read `House Rules.md`. House rules override the rules documents.
-2. Read `game-state.md`, `player-character.md` and `ship.md` in category `StarforgedCozy.State`.
-3. Read the most recent session summary. Read older ones only if something calls for it. To find something in them, use `find_text` or `search_index` on `StarforgedCozy.Sessions`, or on `StarforgedCozy` to include everything.
-4. Call `list_documents` once on each of `StarforgedCozy.Vows`, `StarforgedCozy.Tasks`, `StarforgedCozy.People`, `StarforgedCozy.Places`, `StarforgedCozy.Setting` and `StarforgedCozy.Sessions`, and keep the lists.
+2. Read `game-state.md`, `player-character.md` and `ship.md` in category `Arcadia.State`.
+3. Read the most recent session summary. Read older ones only if something calls for it. To find something in them, use `find_text` or `search_index` on `Arcadia.Sessions`, or on `Arcadia` to include everything.
+4. Call `list_documents` once on each of `Arcadia.Vows`, `Arcadia.Tasks`, `Arcadia.People`, `Arcadia.Places`, `Arcadia.Setting` and `Arcadia.Sessions`, and keep the lists.
 5. Fetch vow, task, people, place and setting documents when they come up in play, not in advance.
 
 ## Starting a session
@@ -127,15 +127,15 @@ When the player ends the session:
 1. Play the End a Session move with the player: reflect, look for missed progress, Develop Your Relationship, Reach a Milestone.
 2. Check the campaign clocks.
 3. Draft the session summary and show it to the player. Write it once they are happy with it.
-4. Call `request_write_permission` for each leaf you will write to. This is usually `StarforgedCozy.Sessions`, `StarforgedCozy.SessionNotes` and `StarforgedCozy.State`, plus `StarforgedCozy.Vows`, `StarforgedCozy.Tasks`, `StarforgedCozy.People`, `StarforgedCozy.Places` or `StarforgedCozy.Setting` when something in them was made or changed.
+4. Call `request_write_permission` for each leaf you will write to. This is usually `Arcadia.Sessions`, `Arcadia.SessionNotes` and `Arcadia.State`, plus `Arcadia.Vows`, `Arcadia.Tasks`, `Arcadia.People`, `Arcadia.Places` or `Arcadia.Setting` when something in them was made or changed.
 5. Before editing an existing document, read it, so you have the exact section headers and drop nothing. Change only the sections that changed.
-6. Write the session summary with `add_document`, indexed, with a one-line summary, following the format in `Document Store.md`. Then create the session's notes document in `StarforgedCozy.SessionNotes`, not indexed, numbered to match, with any rulings and other notes.
+6. Write the session summary with `add_document`, indexed, with a one-line summary, following the format in `Document Store.md`. Then create the session's notes document in `Arcadia.SessionNotes`, not indexed, numbered to match, with any rulings and other notes.
 7. Update `game-state.md`: the current situation, active clocks, threats and open threads.
 8. Update `player-character.md`: meters, impacts, satisfaction, momentum, assets, legacy tracks and experience, skills, connections, and the vow and task progress lists. Add new entries and remove finished ones.
 9. Update `ship.md` if the ship changed: integrity, troubles, ship supply, modules, and any room or space that changed.
-10. In `StarforgedCozy.Vows` and `StarforgedCozy.Tasks`, create a document for every vow sworn and task made this session, update the story section of any that moved on, and use `archive_document` on any fulfilled, forsaken, finished or cancelled.
-11. In `StarforgedCozy.People`, create a document for every NPC who earned one, and add only newly established facts to existing ones.
-12. In `StarforgedCozy.Places` and `StarforgedCozy.Setting`, add or edit what was established in play. When a change supersedes an older detail, replace the old line rather than adding a new one beside it.
+10. In `Arcadia.Vows` and `Arcadia.Tasks`, create a document for every vow sworn and task made this session, update the story section of any that moved on, and use `archive_document` on any fulfilled, forsaken, finished or cancelled.
+11. In `Arcadia.People`, create a document for every NPC who earned one, and add only newly established facts to existing ones.
+12. In `Arcadia.Places` and `Arcadia.Setting`, add or edit what was established in play. When a change supersedes an older detail, replace the old line rather than adding a new one beside it.
 13. If a new house rule was made, draft the addition for the player, since `House Rules.md` is a project file and cannot be written from here.
 14. Call `release_write_permission` for each leaf you wrote to.
 

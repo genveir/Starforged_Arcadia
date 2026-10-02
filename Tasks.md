@@ -1,4 +1,4 @@
-# Starforged Cozy: Tasks
+# Arcadia: Tasks
 
 Tasks are a small system bolted onto the side of Starforged. They cover the quiet work of a life in space: little jobs, favours, learning a craft, settling in, and making the ship a home. They do not replace any Starforged move and are not integrated with Starforged's economy. Momentum, legacy tracks, experience and assets work exactly as written and are never earned through tasks.
 
