@@ -101,7 +101,7 @@ Campaign material lives in two places. Project files (this document, the rules d
 ## Before a session
 
 1. Read `House Rules.md`. House rules override the rules documents.
-2. Read `game-state.md`, `player-character.md` and `ship.md` in category `StarForgedCozy.State`.
+2. Read `game-state.md`, `player-character.md` and `ship.md` in category `StarforgedCozy.State`.
 3. Read the most recent session summary. Read older ones only if something calls for it. To find something in them, use `find_text` or `search_index` on `StarforgedCozy.Sessions`, or on `StarforgedCozy` to include everything.
 4. Call `list_documents` once on each of `StarforgedCozy.Vows`, `StarforgedCozy.Tasks`, `StarforgedCozy.People`, `StarforgedCozy.Places`, `StarforgedCozy.Setting` and `StarforgedCozy.Sessions`, and keep the lists.
 5. Fetch vow, task, people, place and setting documents when they come up in play, not in advance.

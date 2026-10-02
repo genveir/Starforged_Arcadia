@@ -32,7 +32,7 @@ Semantic search is poor at rare proper nouns, and science fiction is full of the
 
 ## Oracles
 
-`StarforgedCozy.Oracles` is a parent of 25 leaf categories holding the Starforged oracle tables, one document per table, plus any the player has added. None are indexed, so `search_index` will not find them. All roll ranges are fully written out at width 2, e.g. "|01,02,03|", not "|1-3|", and "00" not "100". Use `find_text` with the leaf, the oracle filename and your roll to get just the row you need. To find a table, use `list_documents` on a leaf, or `find_text` on `StarforgedCozy.Oracles`. The leaves are:
+`StarforgedCozy.Oracles` is a parent of 25 leaf categories holding the Starforged oracle tables, one document per table, plus any the player has added. None are indexed, so `search_index` will not find them. All roll ranges are fully written out at width 2, e.g. "| 01, 02, 03 |", not "|1-3|", and "00" not "100". Use `find_text` with the leaf, the oracle filename and your roll (`11`, not `|11|`) to get just the row you need. To find a table, use `list_documents` on a leaf, or `find_text` on `StarforgedCozy.Oracles`. The leaves are:
 
 - **Core.** Action, Theme, Descriptor and Focus.
 - **Characters**, **Creatures**, **Factions**, **Settlements**, **Starships**, **Space**, **Derelicts**, **Vaults** and **LocationThemes.** The tables for each kind of subject.
