@@ -40,14 +40,14 @@ There are three legacy tracks: quests, bonds, and discoveries. They measure the 
 
 An action roll uses three dice: one six-sided action die (d6) and two ten-sided challenge dice (d10).
 
-**Action score:** action die + stat + any adds. The action score cannot exceed 10 — anything over is ignored.
+**Action score:** action die + stat + any adds.
 
 **Outcomes:** compare your action score against each challenge die individually.
 - Strong hit: beats both challenge dice
 - Weak hit: beats one challenge die
 - Miss: beats neither
 
-Ties always go to the challenge dice — you must beat them, not match them. Since your action score caps at 10, a challenge die showing 10 can never be beaten.
+Ties always go to the challenge dice — you must beat them, not match them.
 
 **Matches:** when both challenge dice show the same number, it is a match. Some moves specify what a match means. Otherwise treat it as a prompt to make something interesting happen — a strong hit match introduces a twist or new opportunity, a miss match means things get worse in an unexpected way. Matched 10s on a miss are as bad as things get.
 
@@ -107,7 +107,7 @@ Before running combat or an expedition, read the relevant moves carefully and re
 
 For combat: identify the objective(s), assign ranks, and establish whether the player is in control or in a bad spot before the first beat. The state determines which moves are available. Take Decisive Action is a progress move — read it carefully before resolving.
 
-For expeditions: waypoints emerge from play, they are not planned in advance. The player rolls Undertake an Expedition repeatedly until they feel comfortable making the Finish an Expedition progress move. Do not prompt them to finish early.
+For expeditions: waypoints emerge from play, they are not planned in advance. Undertake an Expedition is made repeatedly until the player feels comfortable making the Finish an Expedition progress move. The player decides when to finish. Do not prompt them to finish early.
 
 ## Combat Position
 
@@ -139,3 +139,7 @@ Any large ship or facility maintains its own supply track, separate from the cha
 When a suffer move lists a "Resist:" option, you may make a resist roll after applying the main result. If the meter is at 0, this is mandatory. If two stats are listed, roll the higher.
 
 Each suffer move specifies which stats or meters to use. Roll and compare as a normal action roll, results are listsed at the move.
+
+## Tasks and Satisfaction
+
+Tasks, satisfaction and skills are a separate system on the side of these rules. See `Tasks.md`. Nothing in this document applies to task rolls unless `Tasks.md` says so.

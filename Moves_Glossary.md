@@ -24,3 +24,7 @@
 | Wits | Expertise, focus, observation, insight, analysis, planning |
 
 **"+(X)mom / -(X)mom"** — Increase or decrease the momentum meter by X.
+
+**"Task"** — A small job or project where failure only costs time and effort, never under threat. Tracked in progress boxes and ticks, not ranks. See `Tasks.md`.
+
+**"Satisfaction"** — Buffer track from 0 upward. Gained from finishing tasks and Find Your Rhythm; spent only to pay the suffer cost of a task miss. See `Tasks.md`.

@@ -1,3 +1,5 @@
+The task moves (Make a Task, Work on a Task, Reap the Benefits, Find Your Rhythm, sub-tasks, cancelling) are in `Tasks.md`.
+
 ## Session Moves
 
 **Begin a Session** — When you begin a significant session or chapter of play: identify/adjust flagged content, recap last session, envision current situation and intent. Optionally spotlight a danger, opportunity, or hidden insight as a brief vignette; if you do, take +(1)mom.
