@@ -51,9 +51,9 @@ Every write tool refuses to run until `request_write_permission` has been called
 - `add_document` creates a document. Always set `indexed: true` unless there is a reason not to. Give it a one-line `summary`, since that is what `list_documents` shows.
 - `replace_section_text` finds an exact snippet of text within one section and replaces every occurrence of it, leaving the rest of the section alone. Prefer this over `replace_document_section` for a small change: only the changed snippet has to be written out, not the whole section.
 - `replace_document_section`, `append_to_document` and `delete_document_section` change one part of a document and leave the rest alone. Reach for `replace_document_section` when more of a section is changing than a snippet-level find-and-replace can cover.
-- `update_document` replaces the whole document. Use it only when most of the document changes, and then write the full replacement with nothing dropped.
+- `update_document` replaces the whole document. Use it only when most of the document changes, and then write the full replacement with nothing dropped. It has an option to index or deindex a file if needed, it rarely should be.
 - `archive_document` removes a document from view entirely: it no longer appears in listings, searches or reads, and cannot be brought back from here. Use it for finished vows and tasks, once anything worth keeping is in the session summary.
-- Editing an indexed document re-indexes it automatically. `index_document` and `deindex_document` are rarely needed.
+- Editing an indexed document re-indexes it automatically.
 
 Every store document opens with a single `#` title, and everything else sits under `##` headers. Sections are what search chunks on, what results are labelled with, and what the section tools address, so anything that will be edited on its own gets its own `##` section. Examples are each person's entry in `unnamed-people.md`, each room or space in `ship.md`, and the clocks in `game-state.md`. Where a header name is ambiguous, qualify it with the headers above it, separated by `>`, for example `Lower Deck > Galley`.
 
@@ -80,3 +80,14 @@ Do not copy a value into a second document.
 - **Setting documents**: how the setting works, as established at the table. A faction document describes the faction, not the times the character dealt with it.
 - **Race documents**: how an alien race lives, governs itself and treats outsiders, as established at the table. How a race acts in a particular sector goes in that sector's place document.
 - **Session summaries**: narrative only. What happened, not where things stand.
+
+## Tool tags
+
+Every localMCP tool description ends with `tag::<tag>`, which groups the tools by job. If you are unsure which tool to use, run a tool search on the tag and it will return the tools that carry it, for example a search for `tag::section-editing`. Searching for multiple tags at once works as well, ensure your limit is equal to the number of tools in the tags you're searching for for best results.
+
+- **tag::core-access**: `list_documents`, `get_document`, `find_text`
+- **tag::semantic-search**: `search_index`, `retrieve_search_results`, `get_document_summary`
+- **tag::document-lifecycle**: `add_document`, `update_document`, `archive_document`
+- **tag::section-editing**: `append_to_document`, `replace_document_section`, `replace_section_text`, `delete_document_section`
+- **tag::authorization**: `request_write_permission`, `release_write_permission`
+- **tag::gameplay**: `roll_dice`
