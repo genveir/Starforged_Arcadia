@@ -1,8 +1,10 @@
 # The Document Store
 
-Campaign material lives in two places. Project files (this document, the rules documents, house rules) are read-only and stable. Everything that changes during play lives in the document store, reached through the localMCP tools.
+Campaign material lives in two places. Project files (this document, the rules documents, house rules) are read-only and stable. Everything that changes during play lives in the document store, reached through the localMCP tools. The `localmcp-document-store` skill covers how to read, search and write the store; this document covers how Arcadia is laid out in it and the conventions for what goes where.
 
-Categories are dotted paths. `Arcadia` is the parent category and holds these leaf categories:
+## Categories
+
+`Arcadia` is the parent category and holds these leaf categories:
 
 - **Arcadia.State.** `game-state.md`, `player-character.md` and `ship.md`.
 - **Arcadia.Vows.** One document per open vow: its terms and its story. Written when a vow is sworn, when its story moves on, and archived when it is fulfilled or forsaken.
@@ -15,21 +17,7 @@ Categories are dotted paths. `Arcadia` is the parent category and holds these le
 - **Arcadia.Sessions.** Narrative session summaries, one document per session, numbered `session_001.md`, `session_002.md`, and so on.
 - **Arcadia.SessionNotes.** Rulings and anything else worth noting that is not part of the session's story, one document per session, numbered to match its summary: `notes_001.md` goes with `session_001.md`. Not indexed.
 
-Documents live only in leaves. Every tool that reads, lists or writes a specific document needs the full leaf path, for example `category: "Arcadia.People"`, `filename: "dockmaster-oyelaran.md"`. The two search tools are the exception: they take a category at any level, and a parent covers everything under it. Search `Arcadia` when you do not know where something lives, and a leaf when you do. Filenames include the `.md` extension and are only unique within their leaf.
-
-## Reading
-
-`list_documents` lists a leaf's documents with their summaries. Given `Arcadia` it is refused with the list of leaves, which is a quick way to see them. `get_document` reads one document in full. `get_document_summary` reads only a document's summary, which is useful after a search returns several chunks from one file.
-
-## Searching
-
-There are two search tools, for two different jobs.
-
-`find_text` finds an exact word or phrase, ignoring case, in every document, indexed or not. Use it for anything with a name: a person, a ship, a place, a vow, an item, a phrase someone said. It returns matching files with short snippets labelled by section, which often answers the question without fetching anything. Pass `wholeWord: true` when a short name could sit inside a longer word. Pass `filename`, with a leaf category, to see where a term appears in one document.
-
-`search_index` matches on meaning, over indexed documents only. Use it for questions like "when did the character last work on the hydroponics bay" or "what has anyone said about the Covenant". It returns chunk IDs with their leaf and filename. Fetch the text with `retrieve_search_results`, or the whole file with `get_document`. It returns 3 results by default; ask for up to 10 with `topK`.
-
-Semantic search is poor at rare proper nouns, and science fiction is full of them. When the question is about a named thing, use `find_text` first.
+Search `Arcadia` when you do not know where something lives, and a leaf when you do.
 
 ## Oracles
 
@@ -44,18 +32,9 @@ Semantic search is poor at rare proper nouns, and science fiction is full of the
 
 A filename is the table's path within its leaf, joined with underscores: `Core/Action.md`, `Derelicts/Access_Feature.md`, `Planets.Desert/Settlements_Core.md`. Where a result points to another table it says so, as in "(see Factions/Legacy.md)". A line under a table headed "cannot be rolled on this table (choose only)" lists results that can be picked but not rolled. Tables the player adds go in their own leaf under `Arcadia.Oracles`, in the same format, not into the Starforged leaves.
 
-## Writing
+## Sections
 
-Every write tool refuses to run until `request_write_permission` has been called for that leaf. Permission covers one leaf only, so request it for each leaf you are about to write, and release it with `release_write_permission` when the write-up is done.
-
-- `add_document` creates a document. Always set `indexed: true` unless there is a reason not to. Give it a one-line `summary`, since that is what `list_documents` shows.
-- `replace_section_text` finds an exact snippet of text within one section and replaces every occurrence of it, leaving the rest of the section alone. Prefer this over `replace_document_section` for a small change: only the changed snippet has to be written out, not the whole section.
-- `replace_document_section`, `append_to_document` and `delete_document_section` change one part of a document and leave the rest alone. Reach for `replace_document_section` when more of a section is changing than a snippet-level find-and-replace can cover.
-- `update_document` replaces the whole document. Use it only when most of the document changes, and then write the full replacement with nothing dropped. It has an option to index or deindex a file if needed, it rarely should be.
-- `archive_document` removes a document from view entirely: it no longer appears in listings, searches or reads, and cannot be brought back from here. Use it for finished vows and tasks, once anything worth keeping is in the session summary.
-- Editing an indexed document re-indexes it automatically.
-
-Every store document opens with a single `#` title, and everything else sits under `##` headers. Sections are what search chunks on, what results are labelled with, and what the section tools address, so anything that will be edited on its own gets its own `##` section. Examples are each person's entry in `unnamed-people.md`, each room or space in `ship.md`, and the clocks in `game-state.md`. Where a header name is ambiguous, qualify it with the headers above it, separated by `>`, for example `Lower Deck > Galley`.
+Anything edited on its own gets its own `##` section. In Arcadia that includes each person's entry in `unnamed-people.md`, each room or space in `ship.md`, and each clock in `game-state.md`.
 
 ## Session summaries
 
@@ -64,6 +43,10 @@ Session summaries are written to be searched. The `#` title is the session numbe
 Note the moves and their outcomes briefly in the scene where they happened, in italics at the end of the paragraph: *(Face Danger +edge: weak hit, health 5 → 4.)*
 
 Keep the summary to the story of the session. Rulings and anything else worth noting go in the session's notes document in `Arcadia.SessionNotes`, created with `add_document`, not indexed, with the same number and the same `#` title as the summary.
+
+## Archiving
+
+Archive finished vows and tasks with `archive_document`, once anything worth keeping is in the session summary. Archiving cannot be undone by you.
 
 ## Every fact has exactly one home
 
@@ -80,14 +63,3 @@ Do not copy a value into a second document.
 - **Setting documents**: how the setting works, as established at the table. A faction document describes the faction, not the times the character dealt with it.
 - **Race documents**: how an alien race lives, governs itself and treats outsiders, as established at the table. How a race acts in a particular sector goes in that sector's place document.
 - **Session summaries**: narrative only. What happened, not where things stand.
-
-## Tool tags
-
-Every localMCP tool description ends with `tag::<tag>`, which groups the tools by job. If you are unsure which tool to use, run a tool search on the tag and it will return the tools that carry it, for example a search for `tag::section-editing`. Searching for multiple tags at once works as well, ensure your limit is equal to the number of tools in the tags you're searching for for best results.
-
-- **tag::core-access**: `list_documents`, `get_document`, `find_text`
-- **tag::semantic-search**: `search_index`, `retrieve_search_results`, `get_document_summary`
-- **tag::document-lifecycle**: `add_document`, `update_document`, `archive_document`
-- **tag::section-editing**: `append_to_document`, `replace_document_section`, `replace_section_text`, `delete_document_section`
-- **tag::authorization**: `request_write_permission`, `release_write_permission`
-- **tag::ironsworn**: `roll_dice`
