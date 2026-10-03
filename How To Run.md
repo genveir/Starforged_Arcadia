@@ -126,10 +126,9 @@ When the player ends the session:
 
 1. Play the End a Session move with the player: reflect, look for missed progress, Develop Your Relationship, Reach a Milestone.
 2. Check the campaign clocks.
-3. Draft the session summary and show it to the player. Write it once they are happy with it.
 4. Call `request_write_permission` for each leaf you will write to. This is usually `Arcadia.Sessions`, `Arcadia.SessionNotes` and `Arcadia.State`, plus `Arcadia.Vows`, `Arcadia.Tasks`, `Arcadia.People`, `Arcadia.Places`, `Arcadia.Setting` or `Arcadia.Races` when something in them was made or changed.
 5. Before editing an existing document, read it, so you have the exact section headers and drop nothing. Change only the sections that changed.
-6. Write the session summary with `add_document`, indexed, with a one-line summary, following the format in `Document Store.md`. Then create the session's notes document in `Arcadia.SessionNotes`, not indexed, numbered to match, with any rulings and other notes.
+6. Write a session summary with `add_document`, indexed, with a one-line summary, following the format in `Document Store.md`. Then create the session's notes document in `Arcadia.SessionNotes`, not indexed, numbered to match, with any rulings and other notes.
 7. Update `game-state.md`: the current situation, active clocks, threats and open threads.
 8. Update `player-character.md`: meters, impacts, satisfaction, momentum, assets, legacy tracks and experience, skills, connections, and the vow and task progress lists. Add new entries and remove finished ones.
 9. Update `ship.md` if the ship changed: integrity, troubles, ship supply, modules, and any room or space that changed.

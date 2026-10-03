@@ -90,4 +90,4 @@ Every localMCP tool description ends with `tag::<tag>`, which groups the tools b
 - **tag::document-lifecycle**: `add_document`, `update_document`, `archive_document`
 - **tag::section-editing**: `append_to_document`, `replace_document_section`, `replace_section_text`, `delete_document_section`
 - **tag::authorization**: `request_write_permission`, `release_write_permission`
-- **tag::gameplay**: `roll_dice`
+- **tag::ironsworn**: `roll_dice`
