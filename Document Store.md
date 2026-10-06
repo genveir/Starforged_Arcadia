@@ -1,6 +1,6 @@
 # The Document Store
 
-Campaign material lives in two places. Project files (this document, the rules documents, house rules) are read-only and stable. Everything that changes during play lives in the document store, reached through the localMCP tools. The `localmcp-document-store` skill covers how to read, search and write the store; this document covers how Arcadia is laid out in it and the conventions for what goes where.
+Campaign material lives in two places. Project files (this document, the rules documents, house rules) are read-only and stable. Everything that changes during play lives in the document store, reached through the localMCP tools. The `localmcp-usage` skill covers how to read, search and write the store, and how the state tools work; this document covers how Arcadia is laid out in it and the conventions for what goes where.
 
 ## Categories
 
@@ -52,10 +52,11 @@ Archive finished vows and tasks with `archive_document`, once anything worth kee
 
 Do not copy a value into a second document.
 
+- **Campaign state** (the state tools, campaign `Arcadia`; see `How To Run.md`): condition meters, momentum, the pending +1 on the next action die roll, the ship's integrity and supply, impacts on the character, the ship and its modules, and the rank and progress of every vow, connection, expedition and fight. None of these are written in any document.
 - **game-state.md**: the character's current location and situation, active campaign clocks (one `##` section each), active threats, and open narrative threads.
-- **player-character.md**: stats, condition meters, momentum, impacts, assets other than the command vehicle and its modules, legacy tracks and experience, satisfaction, skills, any pending +1 on the next action die roll, and personal gear. It holds progress as lists: vow progress (rank and ticks), task progress (boxes and ticks, with any carryover rates noted on the line), and connections (role, rank, progress, bonded or not). Progress lives here and nowhere else. Also backstory and character notes.
-- **ship.md**: the command vehicle. Its name, its asset abilities, integrity, troubles (battered, cursed), the ship's supply track, modules and their status, and support vehicles. Then one `##` section per room or space aboard, recording what it is like now: the galley that finally works, the garden bay, the bunk with the terrible mattress. This is where the ship becoming a home is written down.
-- **Vow documents**: rank, the vow as sworn, who it was sworn to, and the story so far. No progress. The summary says what the vow is and where it stands in one line.
+- **player-character.md**: stats, assets other than the command vehicle and its modules, legacy tracks and experience, satisfaction, skills, and personal gear. Task progress as a list (boxes and ticks, with any carryover rates noted on the line), and connections (role, home, bonded or not), next to the goodwill list. Also backstory and character notes.
+- **ship.md**: the command vehicle. Its name, its asset abilities, its modules and their abilities, and support vehicles. Then one `##` section per room or space aboard, recording what it is like now: the galley that finally works, the garden bay, the bunk with the terrible mattress. This is where the ship becoming a home is written down.
+- **Vow documents**: the vow as sworn, who it was sworn to, its track id, and the story so far. No rank or progress. The summary says what the vow is and where it stands in one line.
 - **Task documents**: urgency, complexity, boxes, carryover, any standing rulings, and the story so far. No ticks. The summary says what the task is and where it stands in one line.
 - **People documents**: static facts only. Identity, role, where they are usually found, appearance and manner, and what has been established about them in play. No connection rank or progress. A person met but not yet worth a document has an entry in `unnamed-people.md`; when they earn one, give them their own and remove their entry with `delete_document_section`.
 - **Group documents**: people who arrive and leave together, such as a crew, a household or a cell, share one document in `Arcadia.People`, named for the group, with one `##` section per named member and one for the group as a whole. A member who earns their own document gets one that points to the group document, and their section is removed from it. The group document is kept after the group leaves.

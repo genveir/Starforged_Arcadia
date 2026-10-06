@@ -108,10 +108,22 @@ You may propose a clock when the fiction calls for one; the player confirms it. 
 
 Campaign material lives in two places. Project files (this document, the rules documents, house rules) are read-only and stable. Everything that changes in play lives in the document store, reached through the localMCP tools. See `Document Store.md` for the categories, and how to read, search and write it.
 
+## Campaign state
+
+The campaign's meters, progress tracks and impacts are kept by the localMCP state tools (`tag::ironsworn::meters`, `tag::ironsworn::tracks`, `tag::ironsworn::impacts` and `tag::ironsworn::checkpoints`), not in the documents and not in your head. Every one of them takes the campaign name, which is `Arcadia`. The tools store values and keep them in range; you apply the rules.
+
+- **Meters.** `health`, `spirit` and `supply` (0 to 5), `momentum` (-6 to 10), and `pending-bonus`, the +1 on the next action die roll (0 or more). Each vehicle has `<vehicle>.integrity` and `<vehicle>.supply` (0 to 5), e.g. `jorran-hasfer.integrity`. A companion gets `<companion>.health`, with its asset's maximum. The tool always allows momentum from -6 to 10: the lower max for marked impacts, and the momentum reset, are yours to apply (see `Rules.md`).
+- **Tracks.** `vow.<name>`, `connection.<name>`, `expedition.<name>` and `combat.<name>`, each with a description and a rank. A vow's track has the same name as its document in `Arcadia.Vows`, and its description is the vow as sworn. A connection's track is named after the person, e.g. `connection.maren-hasfer`. `update_track` in mark mode adds the rank's ticks per mark; set mode is for anything else, such as recalculating progress after Deepen a Connection.
+- **Impacts.** Marked on what carries them: `character`, the ship (`jorran-hasfer`), or a module (`research-lab`). Use the impact's own name: `wounded`, `shaken`, `unprepared`, `doomed`, `tormented`, `indebted`, `permanently harmed`, `traumatized`, `battered`, `cursed` or `broken`.
+
+Write each change through the tools when it happens in play, not at the end of the session, and read values with `get_meters`, `get_tracks` and `get_impacts` rather than from memory. When a tool reports `clamped`, part of the change did not fit; what follows from that, such as excess harm at 0 health becoming lost momentum, is yours to apply.
+
+A new campaign starts with the meters above for the character and each vehicle, a track for each vow and connection, and nothing else.
+
 ## Before a session
 
 1. Read `House Rules.md`. House rules override the rules documents.
-2. Read `game-state.md`, `player-character.md` and `ship.md` in category `Arcadia.State`.
+2. Read `game-state.md`, `player-character.md` and `ship.md` in category `Arcadia.State`, and the campaign state with `get_meters`, `get_tracks` and `get_impacts`.
 3. Read the most recent session summary. Read older ones only if something calls for it. To find something in them, use `find_text` or `search_index` on `Arcadia.Sessions`, or on `Arcadia` to include everything.
 4. Call `list_documents` once on each of `Arcadia.Vows`, `Arcadia.Tasks`, `Arcadia.People`, `Arcadia.Places`, `Arcadia.Setting`, `Arcadia.Races` and `Arcadia.Sessions`, and keep the lists.
 5. Fetch vow, task, people, place, setting and race documents when they come up in play, not in advance.
@@ -121,14 +133,14 @@ Campaign material lives in two places. Project files (this document, the rules d
 When the player says to start a session:
 
 1. Give a short recap of where things stand: the fiction, the meters, and anything pressing.
-2. Play the Begin a Session move. Ask whether the player wants a vignette. If they have one, narrate it under the header **Opening Vignette**. Do not propose to write one yourself.
+2. Play the Begin a Session move. First call `create_checkpoint` with the session's number as its name, e.g. `session-3`, so the session can be rolled back if it is abandoned. Then ask whether the player wants a vignette. If they have one, narrate it under the header **Opening Vignette**. Do not propose to write one yourself.
 3. Ask what the character does.
 
 ## During a session
 
-Keep a running record: meters, momentum, impacts, satisfaction, progress on vows, tasks, connections and expeditions, legacy ticks, any pending +1 on the next action die roll, and any NPC, place or setting detail established. It is written down at the end of the session.
+Meters, momentum, impacts, the pending +1 and progress on vows, connections, expeditions and fights go through the state tools as they change (see Campaign state). Keep a running record of the rest: satisfaction, task progress, legacy ticks, goodwill, and any NPC, place or setting detail established. It is written down at the end of the session.
 
-A pending +1 on the next action die roll persists until an action die roll uses it, including through progress moves. Any action roll other than a task roll uses it: drop it from the record straight away.
+A pending +1 on the next action die roll persists until an action die roll uses it, including through progress moves. Any action roll other than a task roll uses it: set `pending-bonus` back to 0 straight away.
 
 ## After a session
 
@@ -136,13 +148,14 @@ When the player ends the session:
 
 1. Play the End a Session move with the player: reflect, look for missed progress, Develop Your Relationship, Reach a Milestone.
 2. Check the campaign clocks.
+3. Check the campaign state is current, and remove the tracks of fights and expeditions that are over.
 4. Call `request_write_permission` for each leaf you will write to. This is usually `Arcadia.Sessions`, `Arcadia.SessionNotes` and `Arcadia.State`, plus `Arcadia.Vows`, `Arcadia.Tasks`, `Arcadia.People`, `Arcadia.Places`, `Arcadia.Setting` or `Arcadia.Races` when something in them was made or changed.
 5. Before editing an existing document, read it, so you have the exact section headers and drop nothing. Change only the sections that changed.
 6. Write a session summary with `add_document`, indexed, with a one-line summary, following the format in `Document Store.md`. Then create the session's notes document in `Arcadia.SessionNotes`, not indexed, numbered to match, with any rulings and other notes.
 7. Update `game-state.md`: the current situation, active clocks, threats and open threads.
-8. Update `player-character.md`: meters, impacts, satisfaction, momentum, assets, legacy tracks and experience, skills, connections, and the vow and task progress lists. Add new entries and remove finished ones.
-9. Update `ship.md` if the ship changed: integrity, troubles, ship supply, modules, and any room or space that changed.
-10. In `Arcadia.Vows` and `Arcadia.Tasks`, create a document for every vow sworn and task made this session, update the story section of any that moved on, and use `archive_document` on any fulfilled, forsaken, finished or cancelled.
+8. Update `player-character.md`: satisfaction, assets, legacy tracks and experience, skills, connections, goodwill and the task progress list. Add new entries and remove finished ones.
+9. Update `ship.md` if the ship changed: modules, and any room or space that changed.
+10. In `Arcadia.Vows` and `Arcadia.Tasks`, create a document for every vow sworn and task made this session, update the story section of any that moved on, and use `archive_document` on any fulfilled, forsaken, finished or cancelled. A fulfilled or forsaken vow's track is removed with `remove_track`.
 11. In `Arcadia.People`, create a document for every NPC who earned one, and add only newly established facts to existing ones.
 12. In `Arcadia.Places`, `Arcadia.Setting` and `Arcadia.Races`, add or edit what was established in play. When a change supersedes an older detail, replace the old line rather than adding a new one beside it.
 13. If a new house rule was made, draft the addition for the player, since `House Rules.md` is a project file and cannot be written from here.
