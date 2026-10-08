@@ -14,6 +14,7 @@ Campaign material lives in two places. Project files (this document, the rules d
 - **Arcadia.Setting.** The truths of the setting, factions, institutions, technology and anything else about how the setting works, one document per topic.
 - **Arcadia.Races.** One document per alien race established in play: what they are like, how they live and govern themselves, and how they treat outsiders.
 - **Arcadia.Oracles.** The Starforged oracle tables, one document per table, plus any the player has added. Not indexed, and split across 25 leaves; see Oracles below.
+- **Arcadia.Procedures.** The procedures for rolling up sectors, planets, settlements and people, one document per procedure, listed with their triggers in `Procedures.md`. Not indexed.
 - **Arcadia.Sessions.** Narrative session summaries, one document per session, numbered `session_001.md`, `session_002.md`, and so on.
 - **Arcadia.SessionNotes.** Rulings and anything else worth noting that is not part of the session's story, one document per session, numbered to match its summary: `notes_001.md` goes with `session_001.md`. Not indexed.
 
