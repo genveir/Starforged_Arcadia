@@ -56,7 +56,7 @@ When genuinely unsure, urgent and complicated gives 3 boxes and is always a safe
 
 On a **strong hit**, mark 2 ticks on the task.
 
-On a **weak hit**, mark 1 tick on the task.
+On a **weak hit**, mark 1 tick on the task, then suffer -1 satisfaction, this can not roll over into other meters, nothing bad happens if you're already at 0.
 
 On a **miss**, you make no progress. Envision what went wrong, then suffer -1 on a meter of your choice (health, spirit, supply or momentum, whichever the fiction supports). You may pay this as -1 satisfaction instead.
 
